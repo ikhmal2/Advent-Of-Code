@@ -85,6 +85,56 @@ function wins(opponentSelect: string, playerSelect: string): number | 0 {
 
 	return score;
 }
+function gameSet(opponentSelect: string, playerSelect: string): number | 0 {
+	let score = 0;
+	if (
+		(opponentSelect === opponentSelection.Rock &&
+			playerSelect === playerSelection.Rock) ||
+		(opponentSelect === opponentSelection.Paper &&
+			playerSelect === playerSelection.Paper) ||
+		(opponentSelect === opponentSelection.Scisscor &&
+			playerSelect === playerSelection.Scisscor)
+	) {
+		score =
+			playerSelect === playerSelection.Rock
+				? result.Tie + 1
+				: playerSelect === playerSelection.Paper
+				? result.Tie + 2
+				: result.Tie + 3;
+	} else if (
+		opponentSelect === opponentSelection.Rock &&
+		playerSelect === playerSelection.Scisscor
+	) {
+		score = result.Lose + 3;
+	} else if (
+		opponentSelect === opponentSelection.Scisscor &&
+		playerSelect === playerSelection.Rock
+	) {
+		score = result.Win + 1;
+	} else if (
+		opponentSelect === opponentSelection.Scisscor &&
+		playerSelect === playerSelection.Paper
+	) {
+		score = result.Lose + 2;
+	} else if (
+		opponentSelect === opponentSelection.Paper &&
+		playerSelect === playerSelection.Scisscor
+	) {
+		score = result.Win + 3;
+	} else if (
+		opponentSelect === opponentSelection.Paper &&
+		playerSelect === playerSelection.Rock
+	) {
+		score = result.Lose + 1;
+	} else if (
+		opponentSelect === opponentSelection.Rock &&
+		playerSelect === playerSelection.Paper
+	) {
+		score = result.Win + 2;
+	}
+
+	return score;
+}
 
 fs.readFile('data.txt', (err, data) => {
 	if (err) {

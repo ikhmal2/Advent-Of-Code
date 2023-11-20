@@ -55,7 +55,7 @@ function wins(opponentSelect: string, playerSelect: string): number | 0 {
 		opponentSelect === opponentSelection.Rock &&
 		playerSelect === playerSelection.Scisscor
 	) {
-		score = result.Lose + 1;
+		score = result.Lose + 3;
 	} else if (
 		opponentSelect === opponentSelection.Scisscor &&
 		playerSelect === playerSelection.Rock
@@ -70,17 +70,17 @@ function wins(opponentSelect: string, playerSelect: string): number | 0 {
 		opponentSelect === opponentSelection.Paper &&
 		playerSelect === playerSelection.Scisscor
 	) {
-		score = result.Win + 2;
+		score = result.Win + 3;
 	} else if (
 		opponentSelect === opponentSelection.Paper &&
 		playerSelect === playerSelection.Rock
 	) {
-		score = result.Lose + 3;
+		score = result.Lose + 1;
 	} else if (
 		opponentSelect === opponentSelection.Rock &&
 		playerSelect === playerSelection.Paper
 	) {
-		score = result.Win + 3;
+		score = result.Win + 2;
 	}
 
 	return score;
@@ -98,6 +98,9 @@ fs.readFile('data.txt', (err, data) => {
 		const opponentSelect: string = singleRound[0];
 		const playerSelect: string = singleRound[1];
 		totalScore += wins(opponentSelect, playerSelect);
+		// console.log(
+		// 	`Total score for round ${index} is ${wins(opponentSelect, playerSelect)}`
+		// );
 	});
 	console.log(totalScore);
 });
